@@ -1,0 +1,11 @@
+{
+  "name": "json-columns",
+  "version": "1.0.0",
+  "description": "Create a column-based visualization of JSON structure from the command line.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryland Bell <ryland.belL@gmail.com> (http://ryland-bell.com)",
+  "license": "MIT"
+}
