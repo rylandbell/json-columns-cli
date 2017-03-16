@@ -1,11 +1,22 @@
 {
   "name": "json-columns",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Create a column-based visualization of JSON structure from the command line.",
-  "main": "index.js",
+  "main": "main.js",
+  "bin": {
+    "json-columns": "./main.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ryland Bell <ryland.belL@gmail.com> (http://ryland-bell.com)",
-  "license": "MIT"
+  "author": "Ryland Bell <ryland.bell@gmail.com> (http://ryland-bell.com)",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "js-string-escape": "^1.0.1",
+    "json-columns-template": "^0.2.0",
+    "open": "0.0.5",
+    "temp": "^0.8.3",
+    "trumpet": "^1.7.2"
+  }
 }
