@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 "use strict";
-
 const fs = require('fs'),
   // through = require('through2'),
-  temp = require('temp'),
+  // temp = require('temp'),
   open = require('open'),
   trumpet = require('trumpet'),
   program = require('commander'),
   jsStringEscape = require('js-string-escape'),
   columnsPageStream = require('json-columns-template');
 
-const assetPath = process.argv[1] + '/node_modules/json-columns-template/build/';
-const tempFile = temp.openSync({suffix: '.html'});
+const assetPath = '../node_modules/json-columns-template/build';
+const tempFile = 'temp/temp.html';
 
 fs.readFile(process.argv[2], processData);
 
@@ -52,12 +51,15 @@ function createPageWithData(userData, openPage) {
 
   tr.select('#bundle')
     .setAttribute('src', assetPath + '/js/bundle.js')
+
+  tr.select('#my-css')
+    .setAttribute('href', assetPath + '/css/style.css')
     // .end();
 
-  const writeTempFile = fs.createWriteStream(tempFile.path);
+  const writeTempFile = fs.createWriteStream(tempFile);
 
   columnsPageStream  
     .pipe(tr)
     .pipe(writeTempFile)
-    .on('finish', () => openPage ? open(tempFile.path,'google chrome') : console.log('all done!'))
+    .on('finish', () => openPage ? open(tempFile,'google chrome') : console.log('all done!'))
 }

@@ -1,6 +1,7 @@
 # Dependency directory
 node_modules
 
-temp
+# Locally generated HTML files
+temp/**
 
 .DS_Store
