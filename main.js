@@ -25,25 +25,27 @@ function processData(err, data) {
   if (err) {
     console.error(err);
   } else {
-    const fileContents = checkForValidJson(data.toString());
-    createPageWithData(fileContents, true);
+    const fileContents = data.toString();
+    const escapedString = jsStringEscape(fileContents);
+    
+    checkForValidJson(fileContents);
+    createPageWithData(escapedString, true);
   }
+}
 
-  //abort the process and display an error msg if the provided user data isn't valid JSON
-  function checkForValidJson(string) {
-    try {
-      JSON.parse(string);
-      const escapedString = jsStringEscape(string);
-      return escapedString;
-    } catch (err) {
-      if (err instanceof SyntaxError) {
-        console.log('Error: not a valid JSON string. ', err.message);
-      } else {
-        console.log('Unexpected error.');
-        console.error(err);
-      }
-      process.exit();
+//abort the process and display an error msg if the provided user data isn't valid JSON
+function checkForValidJson(string) {
+  try {
+    JSON.parse(string);
+    return true;
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      console.log('Error: not a valid JSON string. ', err.message);
+    } else {
+      console.log('Unexpected error.');
+      console.error(err);
     }
+    process.exit();
   }
 }
 
@@ -57,17 +59,16 @@ function createPageWithData(userData, openPage) {
     .createWriteStream()
     .end(`var preloadedUserData = '${userData}'`);
 
+  //direct generated page to local versions of assets
   tr.select('#bundle')
     .setAttribute('src', assetPath + '/js/bundle.js')
-
   tr.select('#my-css')
     .setAttribute('href', assetPath + '/css/style.css')
-    // .end();
 
   const writeTempFile = fs.createWriteStream(tempFile);
 
   columnsPageStream  
     .pipe(tr)
     .pipe(writeTempFile)
-    .on('finish', () => openPage ? open(tempFile,'google chrome') : console.log('all done!'))
+    .on('finish', () => openPage ? open(tempFile) : console.log('all done!'))
 }
