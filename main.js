@@ -1,23 +1,29 @@
 #!/usr/bin/env node
 "use strict";
 const fs = require('fs'),
-  // through = require('through2'),
-  // temp = require('temp'),
   open = require('open'),
   trumpet = require('trumpet'),
   program = require('commander'),
   jsStringEscape = require('js-string-escape'),
-  columnsPageStream = require('json-columns-template');
+  columnsPageStream = require('json-columns-template'),
+  currentVersion = require('./package.json').version;
 
-const assetPath = '../node_modules/json-columns-template/build';
-const tempFile = 'temp/temp.html';
+//use the Commander package to parse user-supplied parameters and auto-generate a --help document
+let inputPath;
+program
+  .version(currentVersion)
+  .arguments('<path to JSON file>')
+  .action(function (path) {
+    inputPath = path;
+  })
+  .parse(process.argv);
 
-fs.readFile(process.argv[2], processData);
+fs.readFile(inputPath, processData);
 
 //will receive readable stream from fs.readFile
 function processData(err, data) {
   if (err) {
-    console.log('error found: ', err);
+    console.error(err);
   } else {
     const fileContents = checkForValidJson(data.toString());
     createPageWithData(fileContents, true);
@@ -42,6 +48,8 @@ function processData(err, data) {
 }
 
 function createPageWithData(userData, openPage) {
+  const assetPath = '../node_modules/json-columns-template/build';
+  const tempFile = 'temp/temp.html';
   const tr = trumpet();
   
   //add code defining a variable to a blank script in source HTML file.
