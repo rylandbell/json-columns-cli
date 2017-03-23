@@ -5,9 +5,11 @@ Navigate JSON-encoded data in a simple column-based interface, either to gain a 
 ## Usage
 
 ###Web version:
+
 The simplest way to use this tool is to copy some JSON to your clipboard and visit [json-navigator.com](http://json-navigator.com).
 
 ###Command line:
+
 Install:
 
 `npm install -g json-columns`
