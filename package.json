@@ -1,6 +1,6 @@
 {
   "name": "json-columns",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create a column-based visualization of JSON structure from the command line.",
   "main": "main.js",
   "bin": {
