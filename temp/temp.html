@@ -1,0 +1,50 @@
+<!DOCTYPE = html>
+<html>
+<head>
+	<title>JSON Columns</title>
+  <!-- style.css bundles Bootstrap w/ my CSS: -->
+	<link id="my-css" type="text/css" rel="stylesheet" href="../node_modules/json-columns-template/build/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <div id="explorer-app"></div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="pull-right">
+          <small> &copy; Ryland Bell 2017 </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Modal with sample data:  -->
+  <div class="modal fade" id="sample-strings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p> Here's a large string from NBA.com, with game data for Feb 14, 2015: </p>
+          <pre class="pre-scrollable">{"resource":"scoreboard","parameters":{"GameDate":"02/14/2015","LeagueID":"00","DayOffset":"0"},"resultSets":[{"name":"GameHeader","headers":["GAME_DATE_EST","GAME_SEQUENCE","GAME_ID","GAME_STATUS_ID","GAME_STATUS_TEXT","GAMECODE","HOME_TEAM_ID","VISITOR_TEAM_ID","SEASON","LIVE_PERIOD","LIVE_PC_TIME","NATL_TV_BROADCASTER_ABBREVIATION","LIVE_PERIOD_TIME_BCAST","WH_STATUS"],"rowSet":[]},{"name":"LineScore","headers":["GAME_DATE_EST","GAME_SEQUENCE","GAME_ID","TEAM_ID","TEAM_ABBREVIATION","TEAM_CITY_NAME","TEAM_WINS_LOSSES","PTS_QTR1","PTS_QTR2","PTS_QTR3","PTS_QTR4","PTS_OT1","PTS_OT2","PTS_OT3","PTS_OT4","PTS_OT5","PTS_OT6","PTS_OT7","PTS_OT8","PTS_OT9","PTS_OT10","PTS","FG_PCT","FT_PCT","FG3_PCT","AST","REB","TOV"],"rowSet":[]},{"name":"SeriesStandings","headers":["GAME_ID","HOME_TEAM_ID","VISITOR_TEAM_ID","GAME_DATE_EST","HOME_TEAM_WINS","HOME_TEAM_LOSSES","SERIES_LEADER"],"rowSet":[]},{"name":"LastMeeting","headers":["GAME_ID","LAST_GAME_ID","LAST_GAME_DATE_EST","LAST_GAME_HOME_TEAM_ID","LAST_GAME_HOME_TEAM_CITY","LAST_GAME_HOME_TEAM_NAME","LAST_GAME_HOME_TEAM_ABBREVIATION","LAST_GAME_HOME_TEAM_POINTS","LAST_GAME_VISITOR_TEAM_ID","LAST_GAME_VISITOR_TEAM_CITY","LAST_GAME_VISITOR_TEAM_NAME","LAST_GAME_VISITOR_TEAM_CITY1","LAST_GAME_VISITOR_TEAM_POINTS"],"rowSet":[]},{"name":"EastConfStandingsByDay","headers":["TEAM_ID","LEAGUE_ID","SEASON_ID","STANDINGSDATE","CONFERENCE","TEAM","G","W","L","W_PCT","HOME_RECORD","ROAD_RECORD"],"rowSet":[[1610612737,"00","22014","02/14/2015","East","Atlanta",54,43,11,0.796,"25-3","18-8"],[1610612761,"00","22014","02/14/2015","East","Toronto",53,36,17,0.679,"21-9","15-8"],[1610612741,"00","22014","02/14/2015","East","Chicago",54,34,20,0.63,"15-11","19-9"],[1610612764,"00","22014","02/14/2015","East","Washington",54,33,21,0.611,"20-8","13-13"],[1610612739,"00","22014","02/14/2015","East","Cleveland",55,33,22,0.6,"21-9","12-13"],[1610612749,"00","22014","02/14/2015","East","Milwaukee",53,30,23,0.566,"15-10","15-13"],[1610612766,"00","22014","02/14/2015","East","Charlotte",52,22,30,0.423,"13-15","9-15"],[1610612748,"00","22014","02/14/2015","East","Miami",52,22,30,0.423,"9-15","13-15"],[1610612751,"00","22014","02/14/2015","East","Brooklyn",52,21,31,0.404,"10-15","11-16"],[1610612738,"00","22014","02/14/2015","East","Boston",51,20,31,0.392,"12-15","8-16"],[1610612765,"00","22014","02/14/2015","East","Detroit",54,21,33,0.389,"10-18","11-15"],[1610612754,"00","22014","02/14/2015","East","Indiana",54,21,33,0.389,"11-14","10-19"],[1610612753,"00","22014","02/14/2015","East","Orlando",56,17,39,0.304,"7-18","10-21"],[1610612755,"00","22014","02/14/2015","East","Philadelphia",53,12,41,0.226,"7-19","5-22"],[1610612752,"00","22014","02/14/2015","East","New York",53,10,43,0.189,"7-19","3-24"]]},{"name":"WestConfStandingsByDay","headers":["TEAM_ID","LEAGUE_ID","SEASON_ID","STANDINGSDATE","CONFERENCE","TEAM","G","W","L","W_PCT","HOME_RECORD","ROAD_RECORD"],"rowSet":[[1610612744,"00","22014","02/14/2015","West","Golden State",51,42,9,0.824,"23-2","19-7"],[1610612763,"00","22014","02/14/2015","West","Memphis",53,39,14,0.736,"23-5","16-9"],[1610612745,"00","22014","02/14/2015","West","Houston",53,36,17,0.679,"18-8","18-9"],[1610612757,"00","22014","02/14/2015","West","Portland",53,36,17,0.679,"23-5","13-12"],[1610612742,"00","22014","02/14/2015","West","Dallas",55,36,19,0.655,"17-9","19-10"],[1610612746,"00","22014","02/14/2015","West","L.A. Clippers",54,35,19,0.648,"21-7","14-12"],[1610612759,"00","22014","02/14/2015","West","San Antonio",53,34,19,0.642,"20-7","14-12"],[1610612756,"00","22014","02/14/2015","West","Phoenix",54,29,25,0.537,"16-11","13-14"],[1610612760,"00","22014","02/14/2015","West","Oklahoma City",53,28,25,0.528,"16-8","12-17"],[1610612740,"00","22014","02/14/2015","West","New Orleans",53,27,26,0.509,"17-10","10-16"],[1610612743,"00","22014","02/14/2015","West","Denver",53,20,33,0.377,"12-14","8-19"],[1610612762,"00","22014","02/14/2015","West","Utah",53,19,34,0.358,"10-15","9-19"],[1610612758,"00","22014","02/14/2015","West","Sacramento",52,18,34,0.346,"11-17","7-17"],[1610612747,"00","22014","02/14/2015","West","L.A. Lakers",53,13,40,0.245,"7-18","6-22"],[1610612750,"00","22014","02/14/2015","West","Minnesota",53,11,42,0.208,"6-21","5-21"]]},{"name":"Available","headers":["GAME_ID","PT_AVAILABLE"],"rowSet":[]}]}</pre>
+          <p> Here's the package.json file for this project: </p>
+          <pre class="pre-scrollable">{"name":"json-explorer","version":"1.0.0","devDependencies":{"babel-register":"^6.11.6","deep-freeze":"0.0.1","expect":"^1.20.2","grunt":"^1.0.1","grunt-eslint":"^19.0.0","grunt-jscs":"^3.0.1","mocha":"^3.0.2"},"dependencies":{"babel-preset-es2015":"^6.13.2","babel-preset-react":"^6.11.1","babelify":"^7.3.0","react":"^15.3.0","react-dom":"^15.3.0","redux":"^3.5.2"},"scripts":{"build":"browserify -t [babelify] -x react -x react-dom -x redux -x expect js/src/main.jsx -o js/build/main.js","build-vendor":"browserify -t [babelify] -r react -r react-dom -r redux -r expect -o js/build/vendor.js","build-watch":"watchify -t [babelify] -x react -x react-dom -x redux -x expect js/src/main.jsx -o js/build/main.js","sass-watch":"sass --watch scss:css","test":"mocha --compilers js:babel-register --recursive","test:watch":"npm test -- --watch"},"babel":{"presets":["react","es2015"]},"eslintConfig":{"parserOptions":{"ecmaVersion":6,"sourceType":"module","ecmaFeatures":{"jsx":true}},"env":{"browser":true,"commonjs":true,"es6":true,"mocha":true,"jquery":true},"plugins":["react"],"react":{"pragma":"React","version":"15.0"},"extends":["eslint:recommended","plugin:react/recommended"],"rules":{"react/prop-types":0,"react/display-name":0}}}</pre>
+          <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- When this page is generated from the json-columns CLI, the user's provided JSON string is defined below: -->
+  <script id="preload-data">var preloadedUserData = '{\n  \"name\": \"json-columns\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Create a column-based visualization of JSON structure from the command line.\",\n  \"main\": \"main.js\",\n  \"bin\": {\n    \"json-columns\": \"./main.js\"\n  },\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"author\": \"Ryland Bell <ryland.bell@gmail.com> (http://ryland-bell.com)\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"commander\": \"^2.9.0\",\n    \"js-string-escape\": \"^1.0.1\",\n    \"json-columns-template\": \"^1.0.0\",\n    \"open\": \"0.0.5\",\n    \"pkginfo\": \"^0.4.0\",\n    \"trumpet\": \"^1.7.2\"\n  }\n}\n'</script>
+  
+  <!-- React, React-DOM, Redux, jQuery, Bootstrap bundled w/ Webpack: -->
+  <script id="bundle" src="../node_modules/json-columns-template/build/js/bundle.min.js"></script>
+ 
+</body>
+</html>
+
+
