@@ -2,6 +2,5 @@
 node_modules
 
 # Locally generated HTML files
-temp/**
 
 .DS_Store
