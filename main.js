@@ -61,7 +61,7 @@ function createPageWithData(userData, openPage) {
 
   //direct generated page to local versions of assets
   tr.select('#bundle')
-    .setAttribute('src', assetPath + '/js/bundle.js')
+    .setAttribute('src', assetPath + '/js/bundle.min.js')
   tr.select('#my-css')
     .setAttribute('href', assetPath + '/css/style.css')
 
