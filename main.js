@@ -55,7 +55,6 @@ function checkForValidJson(string) {
 
 function createPageWithData(userData, openPage) {
   const assetPath = __dirname + '/node_modules/json-columns-template/build';
-  // const tempFile = __dirname + '/temp/temp.html';
   const tempFile = temp.path({suffix: '.html'});
   const tr = trumpet();
   
