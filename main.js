@@ -8,9 +8,6 @@ const fs = require('fs'),
   jsStringEscape = require('js-string-escape'),
   columnsPageStream = require('json-columns-template'),
   currentVersion = require('./package.json').version;
- 
-// Process the data (note: error handling omitted) 
-var myTemp = temp.open({suffix: '.html'});
 
 //use the Commander package to parse user-supplied parameters and auto-generate a --help document
 let inputPath;
