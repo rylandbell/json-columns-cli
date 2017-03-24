@@ -6,6 +6,10 @@
   "bin": {
     "json-columns": "./main.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rylandbell/json-columns-cli.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +21,7 @@
     "json-columns-template": "^1.0.0",
     "open": "0.0.5",
     "pkginfo": "^0.4.0",
+    "temp": "^0.8.3",
     "trumpet": "^1.7.2"
   }
 }

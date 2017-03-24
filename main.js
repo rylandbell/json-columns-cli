@@ -4,9 +4,13 @@ const fs = require('fs'),
   open = require('open'),
   trumpet = require('trumpet'),
   program = require('commander'),
+  temp = require('temp'),
   jsStringEscape = require('js-string-escape'),
   columnsPageStream = require('json-columns-template'),
   currentVersion = require('./package.json').version;
+ 
+// Process the data (note: error handling omitted) 
+var myTemp = temp.open({suffix: '.html'});
 
 //use the Commander package to parse user-supplied parameters and auto-generate a --help document
 let inputPath;
@@ -51,7 +55,8 @@ function checkForValidJson(string) {
 
 function createPageWithData(userData, openPage) {
   const assetPath = __dirname + '/node_modules/json-columns-template/build';
-  const tempFile = __dirname + '/temp/temp.html';
+  // const tempFile = __dirname + '/temp/temp.html';
+  const tempFile = temp.path({suffix: '.html'});
   const tr = trumpet();
   
   //add code defining a variable to a blank script in source HTML file.
