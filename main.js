@@ -6,8 +6,9 @@ const fs = require('fs'),
   program = require('commander'),
   temp = require('temp'),
   jsStringEscape = require('js-string-escape'),
-  columnsPageStream = require('json-columns-template'),
-  currentVersion = require('./package.json').version;
+  columnsPageStream = require('json-columns-template');
+
+const currentVersion = require('./package.json').version;
 
 //use the Commander package to parse user-supplied parameters and auto-generate a --help document
 let inputPath;

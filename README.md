@@ -6,7 +6,7 @@ Navigate JSON-encoded data in a simple column-based interface, either to gain a 
 
 **Web version:**
 
-The simplest way to use this tool is to copy some JSON to your clipboard and visit [json-navigator.com](http://json-navigator.com).
+The simplest way to use this tool is to copy some JSON to your clipboard and visit [json-columns.com](http://json-columns.com).
 
 **Command line:**
 
