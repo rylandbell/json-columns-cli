@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+
 const fs = require('fs'),
   open = require('open'),
   trumpet = require('trumpet'),
@@ -8,19 +9,55 @@ const fs = require('fs'),
   jsStringEscape = require('js-string-escape'),
   columnsPageStream = require('json-columns-template');
 
-const currentVersion = require('./package.json').version;
+//Detect if the script is receiving data from process.stdin or is being passed a file path as an argument (or neither):
+let data = '';
+let pipeFound = false;
+
+process.stdin.on('readable', function() {
+  var chunk = this.read();
+  if (chunk !== null) {
+    pipeFound = true;
+    data += chunk;
+  } else if (pipeFound) {
+    //do nothing, wait for end event
+  } else {
+    withoutPipe();
+    this.end();
+  }
+});
+
+process.stdin.on('end', function() {
+  if (data.length > 0) {
+    withPipe(data);
+  } else {
+    console.log('Input stream ended, but no data was found.');
+  }
+});
+
+//handle the piped data
+function withPipe(data) {
+  processData(null, data.trim());
+}
 
 //use the Commander package to parse user-supplied parameters and auto-generate a --help document
-let inputPath;
-program
-  .version(currentVersion)
-  .arguments('<path to JSON file>')
-  .action(function (path) {
-    inputPath = path;
-  })
-  .parse(process.argv);
+function withoutPipe() {
+  let inputPath;
+  const currentVersion = require('./package.json').version;
 
-fs.readFile(inputPath, processData);
+  program
+    .version(currentVersion)
+    .arguments('<path to JSON file>')
+    .action(function (path) {
+      inputPath = path;
+    })
+    .parse(process.argv);
+  
+  if (inputPath && inputPath.length > 0) {
+    fs.readFile(inputPath, processData);
+  } else {
+    console.error('\nNo path found. Try: \n\njson-columns <path to JSON file>\n')
+  }
+}
 
 //will receive readable stream from fs.readFile
 function processData(err, data) {
