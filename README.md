@@ -14,13 +14,13 @@ Install:
 
 `npm install -g json-columns`
 
-To use, pass the app the path of a JSON-encoded file or pipe it JSON data directly from the shell via tools like `curl`.
+To use, pass the app the path of a JSON-encoded file or pipe it JSON data directly from the shell via tools like `curl`. For example,
 
 `json-columns my-file.json`
 
 or
 
-`curl -# https://jsonplaceholder.typicode.com/posts | node main`
+`curl -# https://jsonplaceholder.typicode.com/posts | json-columns`
 
 This will generate a JSON Columns page pre-loaded with data from the supplied JSON file.
 
