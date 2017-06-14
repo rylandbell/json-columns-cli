@@ -1,28 +1,30 @@
-# JSON Columns CLI
+# JSON Columns
 
-Navigate JSON-encoded data in a simple column-based interface, either to gain a general sense of the data structure or to create a copy-pastable path to a given value. 
+Navigate JSON-encoded data in a simple column-based interface, either to gain a general sense of the data structure or to find the path need to reference a specific value. 
+
+<img src="./media/demo.gif" width=100%>
 
 ## Usage
 
-**Web version:**
+### On the Web
 
 The simplest way to use this tool is to copy some JSON to your clipboard and visit [json-columns.com](http://json-columns.com).
 
-**Command line:**
+### From the Command Line
+
+The command-line tool generates a local JSON Columns page pre-loaded with data.
 
 Install:
 
 `npm install -g json-columns`
 
-To use, pass the app the path of a JSON-encoded file or pipe it JSON data directly from the shell via tools like `curl`. For example,
+To use, pass the app the path of a JSON-encoded file:
 
-`json-columns my-file.json`
+`json-columns data.json`
 
-or
+Alternatively, pipe it JSON data directly via standard input. For example:
 
 `curl -# https://jsonplaceholder.typicode.com/posts | json-columns`
-
-This will generate a JSON Columns page pre-loaded with data from the supplied JSON file.
 
 ## License
 
