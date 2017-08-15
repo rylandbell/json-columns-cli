@@ -1,6 +1,6 @@
 # JSON Columns
 
-Navigate JSON-encoded data in a simple column-based interface, either to gain a general sense of the data structure or to find the path need to reference a specific value. 
+Navigate JSON-encoded data in a simple column-based interface, either to gain a general sense of the data structure or to find the path needed to reference a specific value. 
 
 <img src="./media/demo.gif" width=100%>
 
